@@ -1,0 +1,117 @@
+<div fxLayout="row" fxLayoutAlign="center start" class="content">
+  <div class="white-bg custom-vote">
+    <div class="header white-fg" fxLayout="column" fxLayoutAlign="space-between start">
+
+      <div>
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-between center" class="top-bar">
+          <span fxFlex fxFlex.gt-md="50" class="font-weight-600 font-size-50 w-100-p">Rule of Thumb</span>
+          <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="font-size-22 w-100-p">
+            <span class="cursor-pointer" [routerLink]="['/apps/pasttrials']">Past Trials</span>
+            <span class="cursor-pointer" [routerLink]="['/apps/howitworks']">How It Works</span>
+            <span>Log In / Sign Up</span>
+            <mat-icon class="s-40">search</mat-icon>
+          </div>
+        </div>
+        <div class="question-pope mt-60">
+          <div fxLayout="row">
+            <div fxFlex="95" fxFlex.gt-md="50"  fxLayout="column">
+              <div fxLayout="column" class="question p-32">
+                <span class="font-size-14">What's your opinion on</span>
+                <span class="font-weight-600 font-size-60 w-100-p mb-20" fxHide fxShow.gt-xs>Pope Francis ?</span>
+                <span class="font-weight-600 font-size-40 w-100-p mb-10" fxHide fxShow.xs>Pope Francis ?</span>
+                <p class="font-weight-300 font-size-20">He's talking though on clergy sexual abuse, but is he just another papal pervert protector? (thumbs down) or a true pedophile punishing pontiff (thumbs up)</p>
+                <div fxLayout="row" class="mb-24">
+                  <img class="mr-12 h-16 w-16" src="/assets/icons/custom/wiki.png" alt="wiki">
+                  <a class="more-info">More Information</a>
+                </div>
+                <span class="font-weight-800 font-size-24">What's Your Verdict?</span>
+              </div>
+              <div fxLayout="row" class="h-68">
+                <div fxFlex="50" class="thumb-up w-100-p h-100-p" [style.border]="popeVote ? '3px white solid' : ''" (click)="popeVote = true" fxLayout="row" fxLayoutAlign="center center">
+                  <mat-icon class="s-36">thumb_up</mat-icon>
+                </div>
+                <div fxFlex="50" class="thumb-down w-100-p h-100-p" [style.border]="!popeVote ? '3px white solid' : ''" (click)="popeVote = false" fxLayout="row" fxLayoutAlign="center center">
+                  <mat-icon class="s-36">thumb_down</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-of-header" fxLayout="row">
+        <div fxFlex="30" class="custom-closing">
+          <div fxLayout="row" fxLayoutAlign="end center" class="h-100-p">
+            <span class="mr-8 font-size-14">CLOSING IN</span>
+          </div>
+        </div>
+        <div fxFlex="70" class="custom-22-days pl-16">
+          <div fxLayout="row" fxLayoutAlign="start center" class="h-100-p blue-grey-800-fg">
+            <span class="font-size-38 font-weight-600 mr-8">22</span>
+            <span class="font-size-34">days</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="content-votes" fxLayout="column">
+      <div class="w-100-p grey-100-bg grey-800-fg p-20" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="showNoteVotes">
+        <div fxFlex>
+          <div fxLayout="row" fxLayout="start center">
+            <div class="mr-8" fxLayout="column">
+              <span class="font-size-30 mb-4">Speak out. Be heard.</span>
+              <span class="font-size-52 font-weight-800">Be counted</span>
+            </div>
+            <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+              <span class="font-size-20">
+                Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It's easy: You sahre your opinion, we analyze and put the data in a public report. 
+              </span>
+            </div>
+          </div>
+        </div>
+        <button mat-icon-button class="ml-12" (click)="showNoteVotes = false;"><mat-icon>close</mat-icon></button>
+      </div>
+      <div class="my-60">
+        <span class="font-size-52">Votes</span>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-md="row wrap" fxLayoutAlign.gt-md="space-between start">
+        <div fxFlex fxFlex.gt-md="48" *ngFor="let c of candidates" class="mb-52">
+          <app-vote-candidate [setCandidate]="c"></app-vote-candidate>
+        </div>
+      </div>
+
+      <div class="all-anyone">
+        <div class="content-anyone" fxLayout="column" fxLayoutAlign="center start">
+          <div class="anyone-else"></div>
+          <div fxFill fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center" class="text-anyone black-fg px-20">
+            <span class="font-size-40">Is there anyone else you would want us to add?</span>
+            <div class="w-100-p" fxLayout="row" fxLayoutAlign="end center">
+              <div class="btn-submit h-60 w-260 ml-12 cursor-pointer" fxLayout="row" fxLayoutAlign="center center">
+                <span class="font-size-26">Submit Name</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-20 delimiter"></div>
+
+      <div class="my-28 w-100-p" fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-between center">
+        <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="my-16">
+          <span class="mr-20">Terms and Conditions</span>
+          <span class="mr-20">Privacy Policy</span>
+          <span class="mr-20">Contact Us</span>
+        </div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+          <span class="mr-20">Follow Us</span>
+          <img class="mr-20 h-28 w-28" src="/assets/icons/custom/facebook.png" alt="facebook">
+          <img class="mr-20 h-28 w-28" src="/assets/icons/custom/twitter.png" alt="twitter">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.candidate{
+  //background-image: url('/assets/imgs/pope.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+  font-family: 'Lato', sans-serif;
+
+  .footer-cand{
+    height: 60px;
+    opacity: 0.9;
+  }
+
+  .in-favor-color{
+    background-color: #1cbbb4;
+  }
+  
+  .against-color{
+    background-color: #ffad1d;
+  }
+
+  .btn-vote{
+    border: 2px white solid;
+  }
+
+  .cand-item{
+    background: linear-gradient(transparent, #333333);
+    opacity: 1;
+  }
+}

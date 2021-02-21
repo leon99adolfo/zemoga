@@ -1,0 +1,116 @@
+// ===================================================================================================
+// Definitions
+// ===================================================================================================
+
+$customPalettes: (
+    'red': $mat-red,
+    'pink': $mat-pink,
+    'purple': $mat-purple,
+    'deep-purple': $mat-deep-purple,
+    'indigo': $mat-indigo,
+    'blue': $mat-blue,
+    'light-blue': $mat-light-blue,
+    'cyan': $mat-cyan,
+    'teal': $mat-teal,
+    'green': $mat-green,
+    'light-green': $mat-light-green,
+    'lime': $mat-lime,
+    'yellow': $mat-yellow,
+    'amber': $mat-amber,
+    'orange': $mat-orange,
+    'deep-orange': $mat-deep-orange,
+    'brown': $mat-brown,
+    'grey': $mat-grey,
+    'blue-grey': $mat-blue-grey
+);
+
+// Material color hues list
+$matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+// ===================================================================================================
+// Methods
+// ===================================================================================================
+
+@mixin generate-color-classes($colorName, $color, $contrastColor, $hue) {
+
+  .#{$colorName}#{$hue}-bg {
+      background-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue} {
+      background-color: $color !important;
+      color: $contrastColor !important;
+
+      &[disabled] {
+          background-color: rgba($color, .12) !important;
+          color: rgba($contrastColor, .26) !important;
+      }
+  }
+
+  .#{$colorName}#{$hue}-fg {
+      color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border {
+      border-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-top {
+      border-top-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-right {
+      border-right-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-bottom {
+      border-bottom-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-left {
+      border-left-color: $color !important;
+  }
+}
+
+
+@mixin custom-color-classes($palettes) {
+
+  // Generate the color classes
+  @each $paletteName, $palette in $palettes {
+
+      // Get the contrasts map
+      $contrasts: map-get($palette, 'contrast');
+
+      @each $hue in $matHues {
+
+          // Get the color and the contrasting color
+          $color: map-get($palette, $hue);
+          $contrast: map-get($contrasts, $hue);
+
+          @if ($color != null and $contrast != null) {
+
+              // Generate color classes
+              @include generate-color-classes($paletteName, $color, $contrast, '-#{$hue}');
+
+              // default color
+              @if ($hue == 500) {
+                  // Generate color classes
+                  @include generate-color-classes($paletteName, $color, $contrast, '');
+              }
+          }
+      }
+  }
+}
+
+
+// Adding colors
+@include custom-color-classes($customPalettes);
+
+// ============================================================================
+.white-bg {
+  background-color: white;
+}
+
+.white-fg {
+  color: white;
+}

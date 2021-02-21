@@ -1,0 +1,48 @@
+<div class="w-100-p" *ngIf="candidate">
+  <div class="candidate" [style.background-image]="setStrBackImg(candidate)" fxLayout="column" fxLayoutAlign="end start">
+    <div fxFlex fxLayout="column" fxLayoutAlign="end start" class="w-100-p white-fg cand-item">
+      <div fxLayout="row" fxLayoutAlign="start end">
+        <div class="in-favor-color p-8 mr-24 mb-8" *ngIf="candidate.inFavor >= candidate.against"><mat-icon class="s-26">thumb_up</mat-icon></div>
+        <div class="against-color p-8 mr-24 mb-8" *ngIf="candidate.inFavor < candidate.against"><mat-icon class="s-26">thumb_down</mat-icon></div>
+        <span class="font-weight-600 font-size-50">{{candidate.name}}</span>
+      </div>
+      <div fxLayout="column" class="ml-68 mb-32">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span class="font-weight-800 font-size-16 mr-4">{{candidate.time}}</span>
+          <span class="font-size-16 mr-4">in</span>
+          <span class="font-size-16 mr-4">{{candidate.topic}}</span>
+        </div>
+        <span class="font-size-20 my-12 mr-20" fxHide fxShow.gt-xs *ngIf="!voteMode">{{candidate.description}}</span>
+        <span class="font-size-20 my-12 mr-20" *ngIf="voteMode">Thank you for voting!</span>
+        <div class="mt-12" fxLayout="row" fxLayoutAlign="start center" *ngIf="!voteMode">
+          <div class="in-favor-color p-8 mr-16 cursor-pointer" [style.border]="candidate.preVoteInFavor ? '3px white solid' : ''" (click)="candidate.preVoteInFavor = true">
+            <mat-icon class="s-26">thumb_up</mat-icon>
+          </div>
+          <div class="against-color p-8 mr-16 cursor-pointer" [style.border]="!candidate.preVoteInFavor ? '3px white solid' : ''" (click)="candidate.preVoteInFavor = false">
+            <mat-icon class="s-26">thumb_down</mat-icon>
+          </div>
+          <div class="btn-vote h-60 w-120 ml-12 cursor-pointer" fxLayout="row" fxLayoutAlign="center center" (click)="voteNow(candidate);">
+            <span>Vote now</span>
+          </div>
+        </div>
+        <div *ngIf="voteMode" class="mt-12">
+          <div class="btn-vote h-60 w-120 ml-12 cursor-pointer" fxLayout="row" fxLayoutAlign="center center" (click)="voteAgain(candidate);">
+            <span>Vote again</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-cand white-fg w-100-p" fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="start center" class="in-favor-color p-8 min-w-116" [style.width]="getInfavorPerc(candidate) + '%'">
+        <mat-icon class="s-36 mr-4">thumb_up</mat-icon>
+        <span class="font-size-32">{{ getInfavorPerc(candidate) }}</span>
+        <span class="font-size-32">%</span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center" class="against-color p-8 min-w-116" [style.width]="getAgainstPerc(candidate) + '%'">
+        <mat-icon class="s-36 mr-4">thumb_down</mat-icon>
+        <span class="font-size-32">{{ getAgainstPerc(candidate) }}</span>
+        <span class="font-size-32">%</span>
+      </div>
+    </div>
+  </div>
+</div>

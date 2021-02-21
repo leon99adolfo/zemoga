@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Material theming tools
+@import '~@angular/material/theming';
+
+// Customs
+@import "app/core/styles/general";
+@import "app/core/styles/color";
+@import "app/core/styles/helper";
+@import "app/core/styles/typography";
+@import "app/core/styles/icons";

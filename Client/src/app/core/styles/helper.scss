@@ -1,0 +1,105 @@
+// ===================================================================================================
+// Height and Width
+// ===================================================================================================
+@each $prop, $abbrev in (height: h, width: w) {
+
+  @for $index from 0 through 180 {
+      $size: $index * 4;
+      $length: #{$size}px;
+
+      .#{$abbrev}-#{$size} {
+          #{$prop}: $length !important;
+          min-#{$prop}: $length !important;
+          max-#{$prop}: $length !important;
+      }
+
+      .min-#{$abbrev}-#{$size} {
+        min-#{$prop}: $length !important;
+      }
+
+      .max-#{$abbrev}-#{$size} {
+        max-#{$prop}: $length !important;
+      }
+  }
+
+  // Percentage
+  @for $i from 0 through 20 {
+      $i-p: 5 * $i;
+      $size-p: 5% * $i;
+
+      .#{$abbrev}-#{$i-p}-p {
+          #{$prop}: $size-p !important;
+      }
+  }
+}
+
+// ===================================================================================================
+// Margin and padding
+// ===================================================================================================
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+
+  @for $index from 0 through 64 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    // m-4, m-8, m-12, p-4, p-8, p-12
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+  }
+
+  @for $index from 0 through 64 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    // px-4, mx-4
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+      #{$prop}-left: $length !important;
+    }
+
+    // py-4, my-4
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+      #{$prop}-bottom: $length !important;
+    }
+  }
+
+  @for $index from 0 through 64 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    // pt-4, mt-4
+    .#{$abbrev}t-#{$size} {
+        #{$prop}-top: $length !important;
+    }
+
+    // pr-4, mr-4
+    .#{$abbrev}r-#{$size} {
+        #{$prop}-right: $length !important;
+    }
+
+    // pb-4, mb-4
+    .#{$abbrev}b-#{$size} {
+        #{$prop}-bottom: $length !important;
+    }
+
+    // pl-4, ml-4
+    .#{$abbrev}l-#{$size} {
+        #{$prop}-left: $length !important;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// Cursor helpers
+// -----------------------------------------------------------------------------------------------------
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
