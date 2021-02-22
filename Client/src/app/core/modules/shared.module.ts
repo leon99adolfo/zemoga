@@ -5,11 +5,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialSharedModule } from './material-shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -19,6 +21,7 @@ import { MaterialSharedModule } from './material-shared.module';
   ],
   exports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

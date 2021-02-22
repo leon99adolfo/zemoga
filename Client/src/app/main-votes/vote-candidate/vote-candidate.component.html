@@ -1,5 +1,6 @@
 <div class="w-100-p" *ngIf="candidate">
-  <div class="candidate" [style.background-image]="setStrBackImg(candidate)" fxLayout="column" fxLayoutAlign="end start">
+  <div class="candidate" fxLayout="column" fxLayoutAlign="end start"
+    [style.background-image]="setStrBackImg(candidate)" [style.background-size]="candidate.pictureSize" [style.background-position]="candidate.picturePosition">
     <div fxFlex fxLayout="column" fxLayoutAlign="end start" class="w-100-p white-fg cand-item">
       <div fxLayout="row" fxLayoutAlign="start end">
         <div class="in-favor-color p-8 mr-24 mb-8" *ngIf="candidate.inFavor >= candidate.against"><mat-icon class="s-26">thumb_up</mat-icon></div>
@@ -14,7 +15,7 @@
         </div>
         <span class="font-size-20 my-12 mr-20" fxHide fxShow.gt-xs *ngIf="!voteMode">{{candidate.description}}</span>
         <span class="font-size-20 my-12 mr-20" *ngIf="voteMode">Thank you for voting!</span>
-        <div class="mt-12" fxLayout="row" fxLayoutAlign="start center" *ngIf="!voteMode">
+        <div class="mt-12" fxLayout="row" fxLayoutAlign="start center" *ngIf="!voteMode && user && canVote(candidate)">
           <div class="in-favor-color p-8 mr-16 cursor-pointer" [style.border]="candidate.preVoteInFavor ? '3px white solid' : ''" (click)="candidate.preVoteInFavor = true">
             <mat-icon class="s-26">thumb_up</mat-icon>
           </div>
@@ -25,7 +26,7 @@
             <span>Vote now</span>
           </div>
         </div>
-        <div *ngIf="voteMode" class="mt-12">
+        <div *ngIf="voteMode && user && canVote(candidate)" class="mt-12">
           <div class="btn-vote h-60 w-120 ml-12 cursor-pointer" fxLayout="row" fxLayoutAlign="center center" (click)="voteAgain(candidate);">
             <span>Vote again</span>
           </div>
@@ -39,9 +40,9 @@
         <span class="font-size-32">%</span>
       </div>
       <div fxLayout="row" fxLayoutAlign="end center" class="against-color p-8 min-w-116" [style.width]="getAgainstPerc(candidate) + '%'">
-        <mat-icon class="s-36 mr-4">thumb_down</mat-icon>
         <span class="font-size-32">{{ getAgainstPerc(candidate) }}</span>
         <span class="font-size-32">%</span>
+        <mat-icon class="s-36 ml-4">thumb_down</mat-icon>
       </div>
     </div>
   </div>

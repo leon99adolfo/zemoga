@@ -1,0 +1,25 @@
+// Define the primary, accent and warn palettes
+$default-primary-palette: mat-palette($mat-blue);
+$default-accent-palette: mat-palette($mat-teal);
+$default-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+
+body {
+
+  // Create an Angular Material theme from the $theme map
+  @include angular-material-theme($theme);
+
+  // Apply the theme to the Fuse Core
+  @include colors-theme($theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $default-primary-palette,
+    accent: $default-accent-palette,
+    warn: $default-warn-palette
+  );
+
+  @include custom-color-classes($palettes);
+}

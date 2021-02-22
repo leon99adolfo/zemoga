@@ -1,0 +1,51 @@
+<div fxLayout="column" class="white-bg">
+  <mat-toolbar class="white-fg blue-bg px-24 h-60">
+    <div class="w-100-p" fxLayout="row" fxLayoutAlign="space-between center">
+      <span>New User</span>
+      <button mat-icon-button>
+        <mat-icon class="s-24" aria-label="Close" matTooltip="Close Dialog" (click)="close()">close</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div mat-dialog-content class="p-24 m-0" fxLayout="column">
+    <form #loginForm="ngForm">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" [(ngModel)]="user.user" name="username" minlength="5" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="user.pwd" name="pwd"  minlength="5" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #birthDateModel="ngModel" [matDatepicker]="birthDate" placeholder="Birthday" name="birthDateName" [(ngModel)]="user.age">
+        <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+        <mat-datepicker #birthDate></mat-datepicker>
+        <mat-error *ngIf="birthDateModel.hasError('matDatepickerParse')">
+          "{{birthDateModel.hasError('matDatepickerParse').text}}" is not a valid date!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Marriage Status" name="marriageStatus" [(ngModel)]="user.marriageStatus">
+          <mat-option value="Single">Single</mat-option>
+          <mat-option value="Married">Married</mat-option>
+          <mat-option value="Widowed">Widowed</mat-option>
+          <mat-option value="Divorcee">Divorcee</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+  </div>
+  <div class="px-16 py-8 white-fg">
+    <div fxLayout="row" fxLayoutAlign="end center" class="mr-8">
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button class="save-btn mr-12" (click)="save()" [disabled]="loginForm.invalid" fxFlow="row" fxLayoutAlign="center center">
+          <mat-icon class="mx-4">save</mat-icon>
+          <span>Save</span>
+        </button>
+        <button mat-raised-button  (click)="close()" fxFlow="row" fxLayoutAlign="center center">
+          <mat-icon class="mx-4">clear</mat-icon>
+          <span>Cancel</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

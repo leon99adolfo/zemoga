@@ -3,14 +3,13 @@
 
   .custom-vote{
     font-family: 'Lato', sans-serif;
-    width: 90%;
-  
+    /*width: 90%;
     @media screen and (max-width: 1800px) { width: 95%; }
-    @media screen and (max-width: 1400px) { width: 100%; }
+    @media screen and (max-width: 1400px) { width: 100%; }*/
   
     .header{
       background-image: url('/assets/imgs/pope.jpg');
-      background-size: 113% 121%;
+      background-size: cover;//113% 121%;
       background-repeat: no-repeat;
       height: 800px;
       

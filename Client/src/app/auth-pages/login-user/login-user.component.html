@@ -1,0 +1,38 @@
+<div fxLayout="column" class="white-bg">
+  <mat-toolbar class="white-fg blue-bg px-24 h-60">
+    <div class="w-100-p" fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Login</span>
+      <button mat-icon-button>
+        <mat-icon class="s-24" aria-label="Close" matTooltip="Close Dialog" (click)="close()">close</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div mat-dialog-content class="p-24 m-0" fxLayout="column">
+    <form #loginForm="ngForm">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" [(ngModel)]="user.user" name="username" minlength="5" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="user.pwd" name="pwd"  minlength="5" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <mat-checkbox [(ngModel)]="user.rememberMe" name="rememberMe" aria-label="Remember Me">Remember Me</mat-checkbox>
+      </div>
+    </form>
+
+  </div>
+  <div class="px-16 py-8 white-fg">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="mr-8">
+      <button mat-button color="primary" fxFlow="row" fxLayoutAlign="center center" (click)="register()">Register</button>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button class="mr-12" color="primary" (click)="save()" [disabled]="loginForm.invalid" fxFlow="row" fxLayoutAlign="center center">
+          <span>Login</span>
+        </button>
+        <button mat-raised-button  (click)="close()" fxFlow="row" fxLayoutAlign="center center">
+          <mat-icon class="mx-4">clear</mat-icon>
+          <span>Cancel</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

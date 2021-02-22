@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Kanye West",
+    "time": "1 Month ago",
+    "topic": "Entertainment",
+    "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero",
+    "picture": "/assets/imgs/kanyeWest.jpg",
+    "pictureSize": "160%",
+    "picturePosition": "0% 58%",
+    "inFavor": 1,
+    "against": 9,
+    "total": 10,
+    "preVoteInFavor": true
+  },
+  {
+    "id": 2,
+    "name": "Mark Zuckerberg",
+    "time": "1 Month ago",
+    "topic": "Business",
+    "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero",
+    "picture": "/assets/imgs/Mark.jpg",
+    "pictureSize": "100%",
+    "picturePosition": "0% 0%",
+    "inFavor": 3,
+    "against": 6,
+    "total": 9,
+    "preVoteInFavor": true
+  },
+  {
+    "id": 3,
+    "name": "Cristina Fernández de Kirchner",
+    "time": "1 Month ago",
+    "topic": "Politics",
+    "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero",
+    "picture": "/assets/imgs/Cristina.jpg",
+    "pictureSize": "160%",
+    "picturePosition": "45% 15%",
+    "inFavor": 4,
+    "against": 6,
+    "total": 10,
+    "preVoteInFavor": true
+  },
+  {
+    "id": 4,
+    "name": "Malala Yousafzai",
+    "time": "1 Month ago",
+    "topic": "Entertainment",
+    "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero",
+    "picture": "/assets/imgs/Malala.jpg",
+    "pictureSize": "170%",
+    "picturePosition": "80% 80%",
+    "inFavor": 64,
+    "against": 36,
+    "total": 100,
+    "preVoteInFavor": true
+  }
+]

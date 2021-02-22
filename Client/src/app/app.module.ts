@@ -5,8 +5,11 @@ import { MainVotesComponent } from './main-votes/main-votes.component';
 import { SharedModule } from './core/modules/shared.module';
 import { VoteCandidateComponent } from './main-votes/vote-candidate/vote-candidate.component';
 import { InfoPagesModule } from './info-pages/info-pages.module';
+import { AuthPagesModule } from './auth-pages/auth-pages.module';
 import { PastTrialsComponent } from './info-pages/past-trials/past-trials.component';
 import { HowItWorksComponent } from './info-pages/how-it-works/how-it-works.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SnackBarMessageComponent } from './core/components/snack-bar-message/snack-bar-message.component';
 
 
 const appRoutes: Routes = [
@@ -20,11 +23,14 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MainVotesComponent,
-    VoteCandidateComponent
+    VoteCandidateComponent,
+    SnackBarMessageComponent
   ],
   imports: [
+    HttpClientModule,
     SharedModule,
     InfoPagesModule,
+    AuthPagesModule,
     RouterModule.forRoot(appRoutes),
   ],
   bootstrap: [

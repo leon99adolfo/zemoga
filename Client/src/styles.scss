@@ -3,9 +3,15 @@
 // Material theming tools
 @import '~@angular/material/theming';
 
+// Angular material
+@include mat-core();
+
 // Customs
 @import "app/core/styles/general";
 @import "app/core/styles/color";
 @import "app/core/styles/helper";
 @import "app/core/styles/typography";
 @import "app/core/styles/icons";
+
+// Adding theme
+@import "app/core/styles/theme";
