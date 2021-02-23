@@ -45,26 +45,6 @@ export default (app: Router) => {
     }
   });
 
-  route.get('/:user', async (req: Request, res: Response, next: NextFunction) => {
-    const params = req.params;
-    // logger
-    const _logger: Logger = Container.get('logger');
-    _logger.info('Start user.get');
-
-    try {
-      const _userService = Container.get(UserService);
-      let result = _userService.getUserByUsername(params.user);
-      
-      _logger.info('Final user.get')
-      return res.json(result).status(200);
-    }
-    catch(e){
-      _logger.error('Error user.get: ', e);
-      return next(e);
-    }
-  });
-
-
   route.post('/create', async (req: Request, res: Response, next: NextFunction) => {
     const body = req.body;
     // logger

@@ -27,4 +27,22 @@ export default (app: Router) => {
     }
   });
 
+
+  route.get('/votesByuser', async (req: Request, res: Response, next: NextFunction) => {
+    // logger
+    const _logger: Logger = Container.get('logger');
+    _logger.info('Start vote.votesByuser');
+
+    try {
+      const _voteService = Container.get(VoteService);
+      let result = _voteService.getVotesByUser();
+
+      _logger.info('Final vote.votesByuser')
+      return res.json(result).status(200);
+    }
+    catch(e){
+      _logger.error('Error vote.votesByuser: ', e);
+      return next(e);
+    }
+  });
 }
